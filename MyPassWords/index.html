@@ -1,0 +1,408 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta name=viewport content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <link href="CSS/MyCSS.css" rel="stylesheet" />
+    <script src="cordova.js"></script>
+
+    <script src="JS/Global_JS.js"></script>
+    <script src="JS/Client_JS.js"></script>
+
+    <!--for alert-->
+    <link href="CSS/reset.css" rel="stylesheet" />
+    <link href="CSS/style.css" rel="stylesheet" />
+    <script src="JS/modernizr.js"></script>
+    <script src="JS/Alert.js"></script>
+
+
+
+</head>
+<body>
+
+    <!--Login PAGE-->
+    <div data-role="page" id="LoginPage">
+        <!--Without header-->
+        <div data-role="content">
+
+            <center>
+                <img id="LogoImg" src="images/Logo.png" />
+                <br />
+                <a id="LogoTxt">&nbsp; My PassWords</a>
+            </center>
+            <div id="LoginFormDiv">
+                <br />
+                <div class="wrap">
+                    <input type="email" id="txtEmail_Login" placeholder="Email" />
+                    <input type="password" id="txtPassword_Login" placeholder="Password" />
+                    <br />
+                    <button id="btnLogin">Log in</button>
+                    <label id="lblForgotPassword" onclick="ForgotPassword();">Forgot your password?</label><br />
+                </div>
+                <div id="lblInfoLogin" class="lblInfo">
+                    lblinfoLogin
+                </div>
+                <div style="padding:3px;"></div>
+                <center>
+                    <img id="signUpImg_Login" src="images/sign-up-here.png" onclick="$.mobile.changePage('#SignUpPage');" />
+                </center>
+            </div>
+        </div>
+
+        <div class="loading-div-background">
+            <div class="ui-corner-all loading-div">
+                <img class="waitDiv" src="images/wait.gif" alt="Loading.." /><br>PROCESSING. PLEASE WAIT...
+            </div>
+        </div>
+
+        <div data-role="footer" data-position="fixed">
+            <center>
+                Copyright © 2017 Mahmoud &amp; Dina
+            </center>
+        </div>
+    </div>
+
+
+
+    <!--Main PAGE-->
+    <div data-role="page" id="MainPage">
+
+        <div id="Maincontent">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#" class="ui-state-persist" data-role="button" data-icon="grid">My PassWords</a></li>
+                        <li><a href="#MyAccountPage" data-role="button" data-icon="gear">My Account</a></li>
+                        <li><a onClick="Logout();" data-role="button" data-icon="delete">LogOut</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="content">
+                <div id="Main_AddNewRecord">
+                    <img id="RefreshIcon" src="images/refresh.png" onclick="location.reload();" />
+                    <img id="AddNewRecordIcon" src="images/add.png" />
+                </div>
+                <div id="DataShow"></div>
+                <a id="btnShow_Alert_DeleteRec" href="#0" class="cd-popup-trigger hidden">Show Alert</a>
+            </div>
+
+
+
+            <div class="loading-div-background">
+                <div class="ui-corner-all loading-div">
+                    <img class="waitDiv" src="images/wait.gif" alt="Loading.." /><br>PROCESSING. PLEASE WAIT...
+                </div>
+            </div>
+
+
+
+            <div class="cd-popup" role="alert" id="DeleteRecordAlert">
+                <div class="cd-popup-container">
+                    <div id="Title_Alert">Delete Site</div>
+                    <div id="text_Alert"> are you sure to delete your Site ?</div>
+                    <ul class="cd-buttons">
+                        <li><a href="#0" id="btnYes_DeleteRec">Yes</a></li>
+                        <li><a href="#0" id="btnNo_DeleteRec">No</a></li>
+                    </ul>
+                    <a href="#0" id="close_Alert_DeleteRec" class="cd-popup-close img-replace">Close</a>
+                </div> <!-- cd-popup-container -->
+            </div> <!-- cd-popup -->
+
+
+
+        </div> <!--end containt-->
+
+
+
+
+        <div data-role="footer" data-position="fixed">
+            <center>
+                Copyright © 2017 Mahmoud &amp; Dina
+            </center>
+        </div>
+    </div>
+
+
+
+    <!--SignUp/Register Page-->
+    <div data-role="page" id="SignUpPage">
+        <!--Without header-->
+        <div data-role="content">
+            <img id="BackIconSignUp" src="images/back.png" />
+            <center>
+                <img id="LogoImgSignUP" src="images/signup.png" />
+            </center>
+            <br />
+            <div class="wrap">
+                <input type="email" id="txtEmail_Register" placeholder="Email" />
+                <input type="password" id="txtPass_Register" placeholder="Password" />
+                <input type="password" id="txtConfirmPass_Register" placeholder="Confirm PassWord" />
+                <input type="text" id="txtFName_Register" placeholder="First Name" />
+                <input type="text" id="txtLName_Register" placeholder="Last Name" />
+                <br />
+                <button id="btnSubmitSignUp">Submit</button>
+            </div>
+            <div id="lblInfoSignUP" class="lblInfo">
+                lblinfoSignUP
+            </div>
+        </div>
+
+        <div class="loading-div-background">
+            <div class="ui-corner-all loading-div">
+                <img class="waitDiv" src="images/wait.gif" alt="Loading.." /><br>PROCESSING. PLEASE WAIT...
+            </div>
+        </div>
+
+        <div data-role="footer" data-position="fixed">
+            <center>
+                Copyright © 2017 Mahmoud &amp; Dina
+            </center>
+        </div>
+    </div>
+
+
+
+    <!--Add New Record Page-->
+    <div data-role="page" id="AddNewRecordPage">
+        <!--Without header-->
+        <div data-role="AddNewRecordContent">
+            <img id="BackIconAddNewRecord" src="images/back.png" />
+            <center>
+                <label id="lblTitle_AddNewRecord">Add New Site</label>
+            </center>
+            <div class="wrap">
+                <input type="text" id="txttitle_AddNewRecord" placeholder="Title" />
+                <input type="text" id="txtURL_AddNewRecord" placeholder="web site (URL)" />
+                <input type="text" id="txtUserName_AddNewRecord" placeholder="User Name" />
+                <input type="text" id="txtPass_AddNewRecord" placeholder="Password" />
+                <textarea id="txtNote_AddNewRecord" rows="2" cols="20" placeholder="Notes"></textarea>
+                <br />
+                <button id="btnSubmitAddNewRecord">Add new Site</button>
+            </div>
+
+            <div id="lblInfoAddNewRecord" class="lblInfo">
+                lblinfoAddNewRecord
+            </div>
+        </div>
+
+        <div class="loading-div-background">
+            <div class="ui-corner-all loading-div">
+                <img class="waitDiv" src="images/wait.gif" alt="Loading.." /><br>PROCESSING. PLEASE WAIT...
+            </div>
+        </div>
+
+        <div class="cd-popup" role="alert" id="AlertTakeImg_AddNewRecord">
+            <div class="cd-popup-container">
+                <div id="Title_Alert">Change Site Logo</div>
+                <div id="text_Alert"> Complete action using !</div>
+                <ul class="cd-buttons">
+                    <li><a href="#0" id="btnTakeImgFromCamera">Camera</a></li>
+                    <li><a href="#0" id="btnTakeImgFromGallery">Gallery</a></li>
+                </ul>
+                <a href="#0" id="close_Alert" class="cd-popup-close img-replace">Close</a>
+            </div> <!-- cd-popup-container -->
+        </div> <!-- cd-popup -->
+
+
+        <div data-role="footer" data-position="fixed">
+            <center>
+                Copyright © 2017 Mahmoud &amp; Dina
+            </center>
+        </div>
+    </div>
+
+
+
+    <!--Edit Record Page-->
+    <div data-role="page" id="EditRecordPage">
+        <!--Without header-->
+        <div data-role="EditRecordContent">
+            <img id="BackIconEditRecord" src="images/back.png" />
+            <center>
+                <label id="lblTitle_EditRecord"></label>
+            </center>
+            <div class="wrap">
+                <center>
+                    <img id="imgLogo_EditRecord" src="" />
+                </center>
+                <input type="text" id="txttitle_EditRecord" placeholder="Title" />
+                <input type="text" id="txtURL_EditRecord" placeholder="web site (URL)" />
+                <input type="text" id="txtUserName_EditRecord" placeholder="User Name" />
+                <input type="text" id="txtPass_EditRecord" placeholder="Password" />
+                <textarea id="txtNote_EditRecord" rows="2" cols="20" placeholder="Notes"></textarea>
+                <br />
+                <button id="btnSubmitEditRecord">Save</button>
+            </div>
+            <div id="lblInfoEditRecord" class="lblInfo">
+                lblinfoEditRecord
+            </div>
+        </div>
+
+
+        <div class="loading-div-background">
+            <div class="ui-corner-all loading-div">
+                <img class="waitDiv" src="images/wait.gif" alt="Loading.." /><br>PROCESSING. PLEASE WAIT...
+            </div>
+        </div>
+
+        <div class="cd-popup" role="alert" id="AlertTakeImg_EditRecord">
+            <div class="cd-popup-container">
+                <div id="Title_Alert_EditRec">Change Site Logo</div>
+                <div id="text_Alert_EditRec"> Complete action using !</div>
+                <ul class="cd-buttons">
+                    <li><a href="#0" id="btnTakeImgFromCamera_EditRec">Camera</a></li>
+                    <li><a href="#0" id="btnTakeImgFromGallery_EditRec">Gallery</a></li>
+                </ul>
+                <a href="#0" id="close_Alert_EditRec" class="cd-popup-close img-replace">Close</a>
+            </div> <!-- cd-popup-container -->
+        </div> <!-- cd-popup -->
+
+
+        <div data-role="footer" data-position="fixed">
+            <center>
+                Copyright © 2017 Mahmoud &amp; Dina
+            </center>
+        </div>
+    </div>
+
+
+
+    <!--MyAccount PAGE-->
+    <div data-role="page" id="MyAccountPage">
+
+        <div id="MyAccountContent">
+            <div data-role="header">
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#MainPage" data-role="button" data-icon="grid">My PassWords</a></li>
+                        <li><a href="#" data-role="button" class="ui-state-persist" data-icon="gear">My Account</a></li>
+                        <li><a onClick="Logout();" data-role="button" data-icon="delete">LogOut</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div data-role="content">
+                <center>
+                    <img id="LogoImgMyAccount" src="images/edit-find-replace-hi.png" />
+                </center>
+                <br />
+                <div class="wrap">
+                    <label class="MyAccountTitlelbl" for="lblEmail_MyAccount">Email:</label>
+                    <center><label id="lblEmail_MyAccount"></label></center>
+                    <label class="MyAccountTitlelbl" for="txtPass_MyAccount">PassWord:</label>
+                    <div class="col-md-6">
+                        <span id="toggle_password_MyAccount" class="field-icon container">
+                            <img id="showHidePass" src="images/PassWordShow.png" />
+                        </span>
+                        <input type="password" id="txtPass_MyAccount" placeholder="Password" />
+                    </div>
+                    <label class="MyAccountTitlelbl" for="txtFName_MyAccount">First Name:</label>
+                    <input type="text" id="txtFName_MyAccount" placeholder="First Name" />
+                    <label class="MyAccountTitlelbl" for="txtLName_MyAccount">Last Name:</label>
+                    <input type="text" id="txtLName_MyAccount" placeholder="Last Name" />
+                    <br />
+                    <button id="btnSubmitMyAccount">Save</button><br />
+                    <a id="btnDeleteAccount" href="#0" class="cd-popup-trigger">Delete Account</a>
+                </div>
+                <div id="lblInfoMyAccount" class="lblInfo">
+                    lblinfoSignUP
+                </div>
+            </div>
+        </div>
+
+        <div class="loading-div-background">
+            <div class="ui-corner-all loading-div">
+                <img class="waitDiv" src="images/wait.gif" alt="Loading.." /><br>PROCESSING. PLEASE WAIT...
+            </div>
+        </div>
+
+
+        <div class="cd-popup" role="alert" id="DeleteAccountAlert">
+            <div class="cd-popup-container">
+                <div id="Title_Alert">Delete Account</div>
+                <div id="text_Alert"> are you sure to delete your Account ?</div>
+                <ul class="cd-buttons">
+                    <li><a href="#0" id="btnYes_MyAccountAlert">Yes</a></li>
+                    <li><a href="#0" id="btnNo_MyAccountAlert">No</a></li>
+                </ul>
+                <a href="#0" id="close_Alert_MyAccount" class="cd-popup-close img-replace">Close</a>
+            </div> <!-- cd-popup-container -->
+        </div> <!-- cd-popup -->
+
+
+
+
+        <div data-role="footer" data-position="fixed">
+            <center>
+                Copyright © 2017 Mahmoud &amp; Dina
+            </center>
+        </div>
+    </div>
+
+
+
+    <!--Share Record Page-->
+    <div data-role="page" id="ShareRecordPage">
+        <!--Without header-->
+        <div data-role="ShareRecordContent">
+            <img id="BackIconShareRecord" src="images/back.png" />
+            <center>
+                <img id="imgLogo_ShareRecord" src="images/share.png" /><br />
+                <label id="lblTitle_ShareRecord"></label>
+            </center>
+            <table class="t2" id="tbl1_ShareRecord">
+                <tr>
+                    <td>
+                        <input type="email" id="txt_EmailShare_ShareRecord" placeholder="Email Share" />
+                    </td>
+                    <td>
+                        <img src="images/addIcon.png" alt="Add User" id="btn_Add_ShareRecord" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=2>
+                        <div id="UserTableDiv_ShareRecord"></div>
+                    </td>
+                </tr>
+            </table>
+
+
+
+            <div id="lblInfoShareRecord" class="lblInfo">
+                lblinfoShareRecord
+            </div>
+        </div>
+
+        <div class="loading-div-background">
+            <div class="ui-corner-all loading-div">
+                <img class="waitDiv" src="images/wait.gif" alt="Loading.." /><br>PROCESSING. PLEASE WAIT...
+            </div>
+        </div>
+
+        <div class="cd-popup" role="alert" id="AlertRemoveShared_ShareRecord">
+            <div class="cd-popup-container">
+                <div id="Title_Alert">Remove Share</div>
+                <div id="text_Alert_ShareRecord"> are you sure to remove share for {Email} ?</div><br />
+                <ul class="cd-buttons">
+                    <li><a href="#0" id="btnYesAlert_ShareRecord">Yes</a></li>
+                    <li><a href="#0" id="btnNoAlert_ShareRecord">No</a></li>
+
+                </ul>
+                <a href="#0" id="close_Alert" class="cd-popup-close img-replace">Close</a>
+            </div> <!-- cd-popup-container -->
+        </div> <!-- cd-popup -->
+
+
+        <div data-role="footer" data-position="fixed">
+            <center>
+                Copyright © 2017 Mahmoud &amp; Dina
+            </center>
+        </div>
+    </div>
+</body>
+</html>

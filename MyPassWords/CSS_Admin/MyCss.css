@@ -1,0 +1,78 @@
+﻿body {
+}
+
+.lblInfo {
+    border-radius: 5px;
+    padding: 2px;
+    background-color: antiquewhite;
+    font-size: 20px;
+    width: 60%;
+    color: red;
+    visibility: hidden;
+}
+
+.ServerErrorTitle {
+    font-size: 14px;
+    color: darkorchid;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.ServerErrorContent {
+    color: red;
+}
+
+.Success {
+    color: green;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.Faild {
+    color: red;
+}
+
+#txtEmail_Login {
+    color: blue;
+    font-size: 16px;
+    width: 60%;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+}
+
+#txtPassword_Login {
+    color: blue;
+    font-size: 16px;
+    width: 60%;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px;
+}
+
+
+
+#lblForgotPassword:hover {
+    color: yellow;
+}
+
+#BarLogo {
+    height: 40px;
+}
+
+#lbl1 {
+    color: #1BBD37;
+    font-size: 40px;
+}
+
+#lbl2 {
+    color: #ffffff;
+    font-size: 40px;
+}
+
+#waitPic {
+    visibility:hidden;
+}
+#AdminSiteMain {
+    visibility: hidden;
+}
